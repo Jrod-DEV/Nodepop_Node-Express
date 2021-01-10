@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 /* GET all adverts. */
-router.get('/adverts', function(req, res, next) {
-  res.render('adverts', {title : 'Adverts'});
+router.post('/adverts', function(req, res, next) {
+  res.send('Advert added succesfully!');
 });
 
 module.exports = router;

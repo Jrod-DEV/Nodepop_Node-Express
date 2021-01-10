@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <% include header.html %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <h2>Conditions</h2>
+    <% if (condition.state) { %>
+    <p><%= condition.second %> is pair</p>
+    <% } else { %>
+    <p><%= condition.second %> is odd</p>
+    <% } %>
+
+    <h2>Bucles - Adverts</h2>
+    <% adverts.forEach(advert => { %>
+    <p><%= advert.id %></p>
+    <p><%= advert.name %></p>
+    <% }) %>
+  </body>
+</html>
