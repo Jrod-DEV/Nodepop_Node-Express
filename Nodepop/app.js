@@ -4,31 +4,44 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var advertsRouter = require('./routes/adverts');
-
 var app = express();
+
+// Mongoose connection
+require('./lib/connectMongoose');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
+app.engine('html', require('ejs').__express);
 
+// Variables for all views
+app.locals.title = 'Nodepop';
+
+// Middlewares
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/adverts', advertsRouter);
+app.use('/', require('./routes/index'));
+app.use('/adverts', require('./routes/adverts'));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
+  console.log(err);
+  if (err.array) {
+    //error de validación
+    err.status = 422;
+    const errINFO = err.array({ onlyFFirstError: true })[0];
+    err.message = `The param ${errINFO.param} ${errINFO.msg}`;
+  }
+
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

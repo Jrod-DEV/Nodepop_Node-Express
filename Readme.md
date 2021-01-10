@@ -21,16 +21,29 @@ npm install
 npm run start
 ```
 
+## Development start
+
+```sh
+npm run dev
+```
+
+## How to start a local mongoDB instance for development
+
+```sh
+./bin/mongod --dbpath ./data/db --directoryperdb
+```
+
 ## Author
 
 👤 **Jonathan Rodríguez**
 
-* Website: https://github.com/Jrod-DEV
-* Github: [@Jrod-DEV](https://github.com/Jrod-DEV)
+- Website: https://github.com/Jrod-DEV
+- Github: [@Jrod-DEV](https://github.com/Jrod-DEV)
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
