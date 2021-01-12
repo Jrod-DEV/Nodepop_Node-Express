@@ -24,8 +24,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/**
+ * Website Routes
+ */
 app.use('/', require('./routes/index'));
-app.use('/adverts', require('./routes/adverts'));
+/* app.use('/adverts', require('./routes/adverts')); */
+
+/**
+ * API Routes
+ */
+app.use('/api/adverts', require('./routes/api/adverts'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

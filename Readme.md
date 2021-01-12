@@ -27,6 +27,19 @@ npm run start
 npm run dev
 ```
 
+## API Methods
+### List of all adverts
+
+GET / api/adverts
+
+[
+  {
+    "_id": "03498560435679483",
+    "name": "IphoneX",
+    etc...
+  }
+]
+
 ## How to start a local mongoDB instance for development
 
 ```sh

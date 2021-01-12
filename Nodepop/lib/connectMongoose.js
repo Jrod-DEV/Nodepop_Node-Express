@@ -12,8 +12,9 @@ mongoose.connection.on('error', (err) => {
 });
 
 mongoose.connect('mongodb://localhost/nodepop', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 module.exports = mongoose.connection;
