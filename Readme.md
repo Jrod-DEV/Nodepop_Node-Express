@@ -15,6 +15,13 @@
 npm install
 ```
 
+## Load inital database
+
+To load the initial database, run the following command in your Terminal
+```sh
+npm run initDB
+```
+
 ## Usage
 
 ```sh
@@ -32,12 +39,31 @@ npm run dev
 
 GET / api/adverts
 
+<< Example expected of JSON >>
 [
   {
-    "_id": "03498560435679483",
-    "name": "IphoneX",
-    etc...
-  }
+  "tags": [
+  "mobile",
+  "work"
+],
+"_id": "5ffd9a82d2a7011c761b3d35",
+"name": "IphoneX",
+"onsale": true,
+"price": 850,
+"photo": "iphoneX.jpg",
+"__v": 0
+},
+{
+  "tags": [
+  "lifestyle"
+],
+"_id": "5ffd9a82d2a7011c761b3d36",
+"name": "Snow Table",
+"onsale": false,
+"price": 200,
+"photo": "table.jpg",
+"__v": 0
+},
 ]
 
 ## How to start a local mongoDB instance for development
