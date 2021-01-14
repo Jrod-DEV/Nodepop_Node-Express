@@ -3,7 +3,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> API to upload purchase and sale items to a database and consume from any platform in JSON format.
+> API REST to upload purchase and sale items to a database and consume it from any platform in JSON format.
 
 ### 🏠 [Homepage](http://localhost:3000)
 
@@ -28,7 +28,7 @@ To load the initial database, run the following command in your Terminal
 npm run initDB
 ```
 **Warning!** Tris script will delete database contents before the load.
-**Use in production only in the first deployment.**
+**Use it in production only in the first deployment.**
 
 ## Usage
 
@@ -36,7 +36,7 @@ npm run initDB
 npm run start
 ```
 
-## Development start
+## Development Start
 
 ```sh
 npm run dev
@@ -47,7 +47,7 @@ npm run dev
 
 GET --> /api/adverts
 
-**Example of expected response in JSON format.**
+**An example of an expected response in JSON format.**
 
 ```
 [
@@ -143,6 +143,83 @@ DELETE -> /api/adverts/<_id>
 Returns: 'HTTP Code 2000'
 Message on console: 'Advert deleted succesfully!'
 ````
+
+### Paginated Results
+```
+- After a request for all ads, we will get a paginated result of 10 in 10 ads.
+
+-  We can modify the page limit by changing the limit value in the request, in this example the limit is 4.
+
+http://localhost:3000/api/adverts?limit=4&skip=0
+
+```
+
+### Apply search filters
+We can apply four different search filters:
+- name: http://localhost:3000/api/adverts?name=Super+Bike
+```
+[
+  {
+    "tags": [
+      "motor",
+      "lifestyle"
+    ],
+    "_id": "6000a39df385c8396f484de5",
+    "name": "Super Bike",
+    "onsale": true,
+    "price": 5000,
+    "photo": "moto.jpg",
+   "__v": 0
+  }
+]
+```
+- tag: http://localhost:3000/api/adverts?tag=motor
+```
+[
+  {
+    "tags": [
+      "motor",
+      "lifestyle"
+    ],
+    "_id": "6000a39df385c8396f484de5",
+    "name": "Super Bike",
+    "onsale": true,
+    "price": 5000,
+    "photo": "moto.jpg",
+    "__v": 0
+  },
+  {
+    "tags": [
+      "motor",
+      "lifestyle"
+    ],
+    "_id": "6000a39df385c8396f484de6",
+    "name": "Mustang GT",
+    "onsale": true,
+    "price": 32000,
+    "photo": "mustang.jpg",
+    "__v": 0
+  }
+]
+```
+- onsale: http://localhost:3000/api/adverts?onsale=false
+```
+[
+  {
+    "tags": [
+      "lifestyle"
+    ],
+    "_id": "6000a39df385c8396f484de4",
+    "name": "Snow Table",
+    "onsale": false,
+    "price": 200,
+    "photo": "table.jpg",
+    "__v": 0
+  }
+]
+```
+- price range
+
 
 ## Author
 

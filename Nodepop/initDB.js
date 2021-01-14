@@ -3,7 +3,6 @@ const { rejects } = require('assert');
 const { resolve } = require('path');
 const readLine = require('readline');
 const conn = require('./lib/connectMongoose');
-const Agente = require('./models/Advert');
 const Advert = require('./models/Advert');
 
 conn.once('open', async () => {
@@ -29,11 +28,11 @@ conn.once('open', async () => {
 async function initAdverts() {
   // Delete existing documents in the collection
   console.log('Emptying adverts collection...');
-  await Agente.deleteMany();
+  await Advert.deleteMany();
 
   // Upload inital documents
   console.log('Loading adverts...');
-  const result = await Agente.insertMany([
+  const result = await Advert.insertMany([
     {
       name: 'IphoneX',
       onsale: true,

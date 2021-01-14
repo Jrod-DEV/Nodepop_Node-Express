@@ -7,7 +7,34 @@ const Advert = require('../../models/Advert');
 /* Get /api/adverts */
 router.get('/', async function (req, res, next) {
   try {
-    const adverts = await Advert.find();
+    const name = req.query.name;
+    const onsale = req.query.onsale;
+    const price = req.query.price;
+    const tag = req.query.tag;
+
+    const limit = parseInt(req.query.limit || 10);
+    const skip = parseInt(req.query.skip);
+
+    // Search filters
+    const filter = {};
+
+    if (name) {
+      filter.name = name;
+    }
+
+    if (price) {
+      filter.price = price;
+    }
+
+    if (tag) {
+      filter.tags = tag;
+    }
+
+    if (onsale) {
+      filter.onsale = onsale;
+    }
+
+    const adverts = await Advert.list(filter, limit, skip);
     res.json(adverts);
   } catch (err) {
     next(err);

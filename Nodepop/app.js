@@ -41,13 +41,21 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
   console.log(err);
   if (err.array) {
-    //error de validación
+    // Validation error
     err.status = 422;
     const errINFO = err.array({ onlyFFirstError: true })[0];
     err.message = `The param ${errINFO.param} ${errINFO.msg}`;
+  }
+
+  res.status(err.status || 500);
+
+  if (req.originalUrl.startsWith('/api/')) {
+    // API request
+    res.json({ error: err.message });
+    return;
   }
 
   // set locals, only providing error in development
@@ -55,7 +63,6 @@ app.use(function (err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
   res.render('error');
 });
 

@@ -11,8 +11,15 @@ const advertSchema = mongoose.Schema({
   tags: [String],
 });
 
+// Methods
+advertSchema.statics.list = function (filter, limit, skip) {
+  const query = Advert.find(filter);
+  query.limit(limit);
+  query.skip(skip);
+  return query.exec();
+};
 // Model
-const Agente = mongoose.model('Advert', advertSchema, 'nodepop');
+const Advert = mongoose.model('Advert', advertSchema, 'nodepop');
 
 // Export model
-module.exports = Agente;
+module.exports = Advert;
