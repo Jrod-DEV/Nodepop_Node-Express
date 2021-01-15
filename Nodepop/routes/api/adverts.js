@@ -14,27 +14,39 @@ router.get('/', async function (req, res, next) {
 
     const limit = parseInt(req.query.limit || 10);
     const skip = parseInt(req.query.skip);
+    const sort = req.query.sort || '_id';
 
     // Search filters
     const filter = {};
 
-    if (name) {
-      filter.name = name;
+    if (typeof name !== 'undefined') {
+      filter.name = new RegExp('^' + name, 'i');
     }
 
-    if (price) {
-      filter.price = price;
+    if (typeof price !== 'undefined' && price !== '-') {
+      if (price.indexOf('-') !== -1) {
+        filter.price = {};
+        let range = price.split('-');
+        if (range[0] !== '') {
+          filter.price.$gte = range[0];
+        }
+        if (range[1] !== '') {
+          filter.price.$lte = range[1];
+        }
+      } else {
+        filter.price = price;
+      }
     }
 
-    if (tag) {
+    if (typeof tag !== 'undefined') {
       filter.tags = tag;
     }
 
-    if (onsale) {
+    if (typeof onsale !== 'undefined') {
       filter.onsale = onsale;
     }
 
-    const adverts = await Advert.list(filter, limit, skip);
+    const adverts = await Advert.list(filter, limit, skip, sort);
     res.json(adverts);
   } catch (err) {
     next(err);

@@ -12,10 +12,11 @@ const advertSchema = mongoose.Schema({
 });
 
 // Methods
-advertSchema.statics.list = function (filter, limit, skip) {
+advertSchema.statics.list = function (filter, limit, skip, sort) {
   const query = Advert.find(filter);
   query.limit(limit);
   query.skip(skip);
+  query.sort(sort);
   return query.exec();
 };
 // Model

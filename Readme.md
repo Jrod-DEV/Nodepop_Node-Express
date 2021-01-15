@@ -3,7 +3,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> API REST to upload purchase and sale items to a database and consume it from any platform in JSON format.
+> API REST to upload purchase and sale items to a database and consume it from any platform using JSON format.
 
 ### 🏠 [Homepage](http://localhost:3000)
 
@@ -218,7 +218,30 @@ We can apply four different search filters:
   }
 ]
 ```
-- price range
+- price  and price range: 
+
+  * 1000 will looks for ads with an equal price as the assigned:
+  http://localhost:3000/api/adverts?price=1000
+
+  * -1000 will look for ads that have a price less than 1000:
+  http://localhost:3000/api/adverts?price=-1000
+  * 10000- will look for ads that have a price higher than 1000:
+  http://localhost:3000/api/adverts?price=1000-
+
+  * 100-1000 will look for ads that have a price between 100 and 1000:
+  http://localhost:3000/api/adverts?price=100-5000
+
+
+
+### Sort Adverts by name, price, tags
+
+- We can apply parameters in the query to sort the results by name, price, onsale or tag.
+- This example will show the results in alphabetical order:
+```
+http://localhost:3000/api/adverts?sort=name
+```
+
+
 
 
 ## Author
