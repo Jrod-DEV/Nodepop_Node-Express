@@ -1,8 +1,21 @@
 'use strict';
 
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
 const Advert = require('../../models/Advert');
+
+// const upload = multer({ dest: 'uploads/' });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    const myFilename = `advert_${file.fieldname}_${file.originalname}_${Date.now()}`;
+    cb(null, myFilename);
+  },
+});
+const upload = multer({ storage: storage });
 
 /* Get /api/adverts */
 router.get('/', async function (req, res, next) {
@@ -111,6 +124,12 @@ router.delete('/:_id', async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+// Upload images : http:localhost:3000/api/adverts/upload
+router.post('/upload', upload.single('image'), (req, res) => {
+  console.log(req.file);
+  res.send('File uploaded successfully!');
 });
 
 module.exports = router;

@@ -68,7 +68,7 @@ async function initAdverts() {
 
 //
 function askUser(textQuestion) {
-  return new Promise((resolve, rejects) => {
+  return new Promise((resolve, reject) => {
     const rl = readLine.createInterface({
       input: process.stdin,
       output: process.stdout,
