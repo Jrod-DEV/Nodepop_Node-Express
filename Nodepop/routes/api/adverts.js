@@ -8,10 +8,10 @@ const Advert = require('../../models/Advert');
 // const upload = multer({ dest: 'uploads/' });
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/');
+    cb(null, 'public/images/');
   },
   filename: function (req, file, cb) {
-    const myFilename = `advert_${file.fieldname}_${file.originalname}_${Date.now()}`;
+    const myFilename = `${file.originalname}`;
     cb(null, myFilename);
   },
 });

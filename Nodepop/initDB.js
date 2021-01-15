@@ -42,7 +42,7 @@ async function initAdverts() {
       tags: ['mobile', 'work'],
     },
     {
-      name: 'Snow Table',
+      name: 'Snowboard',
       onsale: false,
       price: 200,
       photo: 'table.jpg',
