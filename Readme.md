@@ -15,7 +15,7 @@
 npm install
 ```
 
-## Configuration of environment variables (.env) 
+## Configuration of environment variables (.env)
 
 Copy .env.example to .env and review the settings.
 
@@ -32,9 +32,11 @@ cp .env.example .env
 ## Load inital database
 
 To load the initial database, run the following command in your Terminal
+
 ```sh
 npm run initDB
 ```
+
 **Warning!** Tris script will delete database contents before the load.
 **Use it in production only in the first deployment.**
 
@@ -51,6 +53,7 @@ npm run dev
 ```
 
 ## API Methods
+
 ### List of all adverts
 
 GET --> /api/adverts
@@ -86,8 +89,11 @@ GET --> /api/adverts
 ```
 
 ## Get an advert
-GET --> /api/adverts/_id
+
+GET --> /api/adverts/\_id
+
 - Example: http://localhost:3000/api/adverts/5ffeb60f3ab3af260d351b45
+
 ```
 {
   "result": {
@@ -105,11 +111,14 @@ GET --> /api/adverts/_id
 }
 ```
 
-### Create an advert
+## Create an advert
 
 POST --> /api/adverts
+
 - Example: http://localhost:3000/api/adverts/
+
 * body: { name: 'Jeep', price: 4500, onsale: true, ... }
+
 ```
 {
     "result": {
@@ -124,12 +133,15 @@ POST --> /api/adverts
 }
 ```
 
-### Update an advert
-PUT -> /api/adverts/<_id>
+## Update an advert
+
+PUT -> /api/adverts/<\_id>
+
 - Example: http://localhost:3000/api/adverts/5ffec6f6bb78932c9e6243af
+
 * body: { price: 5000 }
 
-````
+```
 {
     "result": {
         "tags": [],
@@ -141,19 +153,23 @@ PUT -> /api/adverts/<_id>
         "__v": 0
     }
 }
-````
+```
 
-### Delete an advert
-DELETE -> /api/adverts/<_id>
+## Delete an advert
+
+DELETE -> /api/adverts/<\_id>
+
 - Example: http://localhost:3000/api/adverts/5ffec6f6bb78932c9e6243af
 
-````
+```
 Returns: 'HTTP Code 2000'
 Message on console: 'Advert deleted succesfully!'
-````
+```
 
 ### Paginated Results
+
 - Example: http://localhost:3000/api/adverts?limit=4&skip=0
+
 ```
 - After a request for all ads, we will get a paginated result of 10 in 10 ads.
 
@@ -162,8 +178,11 @@ Message on console: 'Advert deleted succesfully!'
 ```
 
 ### Apply search filters
+
 We can apply four different search filters:
+
 - name: http://localhost:3000/api/adverts?name=Super+Bike
+
 ```
 [
   {
@@ -180,7 +199,9 @@ We can apply four different search filters:
   }
 ]
 ```
+
 - tag: http://localhost:3000/api/adverts?tag=motor
+
 ```
 [
   {
@@ -209,7 +230,9 @@ We can apply four different search filters:
   }
 ]
 ```
+
 - onsale: http://localhost:3000/api/adverts?onsale=false
+
 ```
 [
   {
@@ -225,33 +248,54 @@ We can apply four different search filters:
   }
 ]
 ```
-- price  and price range: 
 
-  * 1000 will looks for ads with an equal price as the assigned:
-  http://localhost:3000/api/adverts?price=1000
+- price and price range:
 
-  * -1000 will look for ads that have a price less than 1000:
-  http://localhost:3000/api/adverts?price=-1000
-  * 10000- will look for ads that have a price higher than 1000:
-  http://localhost:3000/api/adverts?price=1000-
+  - 1000 will looks for ads with an equal price as the assigned:
+    http://localhost:3000/api/adverts?price=1000
 
-  * 100-1000 will look for ads that have a price between 100 and 1000:
-  http://localhost:3000/api/adverts?price=100-5000
+  - -1000 will look for ads that have a price less than 1000:
+    http://localhost:3000/api/adverts?price=-1000
+  - 10000- will look for ads that have a price higher than 1000:
+    http://localhost:3000/api/adverts?price=1000-
 
-  * This is a GET request with all search parameters, result limits and order:
-  http://localhost:3000/api/adverts?name=iphone&sort=price&price=-1200&onsale=true&tag=mobile&limit=2&skip=0
+  - 100-1000 will look for ads that have a price between 100 and 1000:
+    http://localhost:3000/api/adverts?price=100-5000
 
+  - This is a GET request with all search parameters, result limits and order:
+    http://localhost:3000/api/adverts?name=iphone&sort=price&price=-1200&onsale=true&tag=mobile&limit=2&skip=0
 
 ### Sort Adverts by name, price, tags
 
 - We can apply parameters in the query to sort the results by name, price, onsale or tag.
 - This example will show the results in alphabetical order:
+
 ```
 http://localhost:3000/api/adverts?sort=name
 ```
 
+## Upload images
 
+POST -> /api/adverts/uploads
 
+- body: { key: image, value: (Select Files) }
+
+We can upload images to our API, which will be stored in the images folder through the following url:
+
+```
+http://localhost:3000/api/adverts/upload
+```
+
+### View stored images
+
+We will be able to access the stored images from the browser.
+
+- Example: http://localhost:3000/images/superbike.jpg
+
+```
+http://localhost:3000/images/<sourceName>
+
+```
 
 ## Author
 

@@ -4,7 +4,7 @@ var createError = require('http-errors');
 const { query, validationResult } = require('express-validator');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
   const second = new Date().getSeconds(); // segundo actual
 
   //   res.locals.valor = '<script>alert("Inyección de código")</script>'
@@ -41,19 +41,19 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Nodepop' });
 });
 
-router.get('/id/:tag', (req, res, next) => {
+router.get('/id/:tag', (req, res) => {
   console.log(req.params);
   res.send('OK');
 });
 
-router.get('/paramenrutaopcional/:price?', (req, res, next) => {
+router.get('/paramenrutaopcional/:price?', (req, res) => {
   console.log(req.params);
   res.send('Price');
 });
 
 router.get(
   '/params/:id/name/:name/onsale/:onsale/price/:price[0-9]/tags/:tags',
-  (req, res, next) => {
+  (req, res) => {
     // http://localhost:3000/params/234234/name/iphone/buy/true/price/1250/tags/mobile
     console.log(req.params);
     res.send('Item with params filter');
@@ -70,7 +70,7 @@ router.get(
     query('tag').isAlpha().withMessage('must be text'),
     query('buy').isBoolean().withMessage('must be true or false'),
   ],
-  (req, res, next) => {
+  (req, res) => {
     validationResult(req).throw(); //lanza una expeción si hay errores de validación
     console.log(req.query);
     // http://localhost:3000/querystring?id=29847923&name=iphone&price=579&tag=mobile&buy=true
@@ -84,8 +84,8 @@ router.post('/enelbody', (req, res, next) => {
   console.log(req.body);
   if (req.body.color !== 'rojo') {
     next(createError(422, 'Color no admitido, solo funciona con el rojo'));
-    //localhost:3000/querystring?color=rojo&talla=L&almacen=jaen
-    http: return;
+    // http://localhost:3000/querystring?color=rojo&talla=L&almacen=jaen
+     return;
   }
   res.send('Ok');
 });
