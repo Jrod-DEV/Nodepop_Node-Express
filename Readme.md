@@ -7,7 +7,7 @@
 
 ### 🏠 [Homepage](http://localhost:3000)
 
-### ✨ [Demo](http://localhot:3000)
+### ✨ [Demo](http://localhost:3000/api/adverts?name=iphone&sort=price&price=-1200&onsale=true&tag=mobile&limit=2&skip=0)
 
 ## Install
 
@@ -145,12 +145,11 @@ Message on console: 'Advert deleted succesfully!'
 ````
 
 ### Paginated Results
+- Example: http://localhost:3000/api/adverts?limit=4&skip=0
 ```
 - After a request for all ads, we will get a paginated result of 10 in 10 ads.
 
 -  We can modify the page limit by changing the limit value in the request, in this example the limit is 4.
-
-http://localhost:3000/api/adverts?limit=4&skip=0
 
 ```
 
@@ -231,6 +230,8 @@ We can apply four different search filters:
   * 100-1000 will look for ads that have a price between 100 and 1000:
   http://localhost:3000/api/adverts?price=100-5000
 
+  * This is a GET request with all search parameters, result limits and order:
+  http://localhost:3000/api/adverts?name=iphone&sort=price&price=-1200&onsale=true&tag=mobile&limit=2&skip=0
 
 
 ### Sort Adverts by name, price, tags
