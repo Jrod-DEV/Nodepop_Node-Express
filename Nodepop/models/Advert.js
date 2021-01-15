@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 // Schema
 const advertSchema = mongoose.Schema({
   name: { type: String, index: true },
-  price: Number,
-  onsale: Boolean,
+  price: { type: Number, index: true },
+  onsale: { type: Boolean, index: true },
   photo: String,
-  tags: [String],
+  tags: { type: [String], index: true },
 });
 
 // Methods
@@ -20,7 +20,7 @@ advertSchema.statics.list = function (filter, limit, skip, sort) {
   return query.exec();
 };
 // Model
-const Advert = mongoose.model('Advert', advertSchema, 'nodepop');
+const Advert = mongoose.model('Advert', advertSchema, 'adverts');
 
 // Export model
 module.exports = Advert;

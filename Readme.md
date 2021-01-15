@@ -15,6 +15,14 @@
 npm install
 ```
 
+## Configuration of environment variables (.env) 
+
+Copy .env.example to .env and review the settings.
+
+```
+cp .env.example .env
+```
+
 ## How to start a local mongoDB instance for development
 
 ```sh

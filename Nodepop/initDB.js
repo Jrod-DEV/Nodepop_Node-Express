@@ -1,6 +1,7 @@
 ' use strict';
-const { rejects } = require('assert');
-const { resolve } = require('path');
+
+require('dotenv').config();
+
 const readLine = require('readline');
 const conn = require('./lib/connectMongoose');
 const Advert = require('./models/Advert');
