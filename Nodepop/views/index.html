@@ -1,38 +1,29 @@
 <%- include header.html%>
-<div>
 
-  <h3><%= description %> </h3>
+<h1 align="center">Welcome to NodepopJS 👋</h1>
+<p>
+  <img
+    alt="Version"
+    src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000"
+  />
+</p>
 
-  <div class="container">
+<section align="center">
+  <article>
+    <p>
+      <em>Nodepop</em> is an API-REST, it can be used by other developers.<br />
+      The service maintains ads for buying and selling items and allows you to
+      search using various filters.
+    </p>
 
-    <table class="table table-bordered table-dark">
-      <thead>
-        <tr>
-          <th scope="col">_id</th>
-          <th scope="col">Name</th>
-          <th scope="col">On sale</th>
-          <th scope="col">Price</th>
-          <th scope="col">Photo</th>
-        </tr>
-      </thead>
-      <tbody>
+    <p>
+        For the correct use of the API, consult the Readme.md, where you will <br>find all the methods and possibilities available.
+    </p>
 
-        <% if (adverts.length > 0) { %>
-          <% adverts.forEach(advert => { %>
-            <tr>
-              <th scope="row"><%= advert._id %> </th>
-              <td><%= advert.name %></td>
-              <td><%= advert.onsale %></td>
-              <td><%= advert.price %></td>
-              <td><%= advert.photo %></td>
-            </tr>
-          <% }) %>
-         <% } %>
+    <form action="http://localhost:3000/adverts">
+        <button type="submit" class="btn btn-info">Get all adds</button>  
+    </form>
 
-      </tbody>
-    </table>
-
-
-</div>
+</section>
 
 <%- include footer.html %>

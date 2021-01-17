@@ -17,7 +17,7 @@ npm install
 
 ## Configuration of environment variables (.env)
 
-Copy .env.example to .env and review the settings.
+Copy .env.exapmle file and apply the necessary configuration parameters following the example.
 
 ```
 cp .env.example .env
@@ -111,60 +111,6 @@ GET --> /api/adverts/\_id
 }
 ```
 
-## Create an advert
-
-POST --> /api/adverts
-
-- Example: http://localhost:3000/api/adverts/
-
-* body: { name: 'Jeep', price: 4500, onsale: true, ... }
-
-```
-{
-    "result": {
-        "tags": [],
-        "_id": "5ffec6f6bb78932c9e6243af",
-        "name": "Jeep",
-        "onsale": true,
-        "price": 4500,
-        "photo": "jeep.jpg",
-        "__v": 0
-    }
-}
-```
-
-## Update an advert
-
-PUT -> /api/adverts/<\_id>
-
-- Example: http://localhost:3000/api/adverts/5ffec6f6bb78932c9e6243af
-
-* body: { price: 5000 }
-
-```
-{
-    "result": {
-        "tags": [],
-        "_id": "5ffec6f6bb78932c9e6243af",
-        "name": "Jeep",
-        "onsale": true,
-        "price": 5000,
-        "photo": "jeep.jpg",
-        "__v": 0
-    }
-}
-```
-
-## Delete an advert
-
-DELETE -> /api/adverts/<\_id>
-
-- Example: http://localhost:3000/api/adverts/5ffec6f6bb78932c9e6243af
-
-```
-Returns: 'HTTP Code 2000'
-Message on console: 'Advert deleted succesfully!'
-```
 
 ### Paginated Results
 
@@ -179,7 +125,7 @@ Message on console: 'Advert deleted succesfully!'
 
 ### Apply search filters
 
-We can apply four different search filters:
+We can apply four different search filters.:
 
 - name: http://localhost:3000/api/adverts?name=Super+Bike
 
@@ -272,6 +218,70 @@ We can apply four different search filters:
 
 ```
 http://localhost:3000/api/adverts?sort=name
+```
+
+
+## Create an advert
+
+POST --> /api/adverts
+
+- Example: http://localhost:3000/api/adverts/
+
+* body: { name: 'Jeep', price: 4500, onsale: true, ... }
+
+```
+{
+    "result": {
+        "tags": [],
+        "_id": "5ffec6f6bb78932c9e6243af",
+        "name": "Jeep",
+        "onsale": true,
+        "price": 4500,
+        "photo": "jeep.jpg",
+        "__v": 0
+    }
+}
+```
+
+## Update an advert
+
+PUT -> /api/adverts/<\_id>
+
+- Example: http://localhost:3000/api/adverts/5ffec6f6bb78932c9e6243af
+
+* body: { price: 5000 }
+
+```
+{
+    "result": {
+        "tags": [],
+        "_id": "5ffec6f6bb78932c9e6243af",
+        "name": "Jeep",
+        "onsale": true,
+        "price": 5000,
+        "photo": "jeep.jpg",
+        "__v": 0
+    }
+}
+```
+
+## Delete an advert
+
+DELETE -> /api/adverts/<\_id>
+
+- Example: http://localhost:3000/api/adverts/5ffec6f6bb78932c9e6243af
+
+```
+Returns: 'HTTP Code 2000'
+Message on console: 'Advert deleted succesfully!'
+```
+
+## Website Routes
+
+If we visit the following URL: http://localhost:3000/adverts , we will get all ads.  In adittion we can apply the same search criteria as in the API.
+
+```
+http://localhost:3000/adverts?skip=1&limit=2&sort=name&tag=lifestyle
 ```
 
 ## Upload images
