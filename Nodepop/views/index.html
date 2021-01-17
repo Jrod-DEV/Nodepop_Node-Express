@@ -1,6 +1,7 @@
 <%- include header.html%>
 <div>
-  <h2><%= description %> </h2>
+
+  <h3><%= description %> </h3>
 
   <div class="container">
 
@@ -9,15 +10,15 @@
         <tr>
           <th scope="col">_id</th>
           <th scope="col">Name</th>
-          <th scope="col">Onsale</th>
+          <th scope="col">On sale</th>
           <th scope="col">Price</th>
           <th scope="col">Photo</th>
         </tr>
       </thead>
       <tbody>
 
-        <% if (arrayAdvertsDB.length > 0) { %>
-          <% arrayAdvertsDB.forEach(advert => { %>
+        <% if (adverts.length > 0) { %>
+          <% adverts.forEach(advert => { %>
             <tr>
               <th scope="row"><%= advert._id %> </th>
               <td><%= advert.name %></td>
