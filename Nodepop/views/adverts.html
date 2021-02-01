@@ -12,6 +12,7 @@
           <th scope="col">Name</th>
           <th scope="col">On sale</th>
           <th scope="col">Price</th>
+          <th scope="col">Tags</th>
           <th scope="col">Photo</th>
         </tr>
       </thead>
@@ -24,6 +25,7 @@
               <td><%= advert.name %></td>
               <td><%= advert.onsale %></td>
               <td><%= advert.price %></td>
+              <td><%= advert.tags %></td>
               <td><img src="images/<%=advert.photo %>"></td>
             </tr>
           <% }) %>
