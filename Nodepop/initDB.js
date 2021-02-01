@@ -52,7 +52,7 @@ async function initAdverts() {
       name: 'Super Bike',
       onsale: true,
       price: 5000,
-      photo: 'superbike.jpg.jpg',
+      photo: 'superbike.jpg',
       tags: ['motor', 'lifestyle'],
     },
     {
