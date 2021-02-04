@@ -8,9 +8,9 @@
 ```
 # Links práctica "Configuración de servidores y despliegue de aplicaciones":
 
-### 🏠 [WEB ESTÁTICA](https://epicfilms.jonydev.net/)
+### 🏠 [WEB ESTÁTICA] https://epicfilms.jonydev.net/
 
-### ✨ [APP NODE](https://nodepop.jonydev.net/)
+### ✨ [APP NODE] https://nodepop.jonydev.net/
 ```
 
 
