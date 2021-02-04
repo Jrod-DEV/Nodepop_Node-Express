@@ -5,9 +5,14 @@
 
 > API REST to upload purchase and sale items to a database and consume it from any platform using JSON format.
 
-### 🏠 [Homepage](http://localhost:3000)
+```
+# Links práctica "Configuración de servidores y despliegue de aplicaciones":
 
-### ✨ [Demo](http://localhost:3000/api/adverts?name=iphone&sort=price&price=-1200&onsale=true&tag=mobile&limit=2&skip=0)
+### 🏠 [WEB ESTÁTICA](https://epicfilms.jonydev.net/)
+
+### ✨ [APP NODE](https://nodepop.jonydev.net/)
+```
+
 
 ## Install
 
@@ -17,7 +22,7 @@ npm install
 
 ## Configuration of environment variables (.env)
 
-Copy .env.exapmle file and apply the necessary configuration parameters following the example.
+Copy .env.example file and apply the necessary configuration parameters following the example.
 
 ```
 cp .env.example .env
